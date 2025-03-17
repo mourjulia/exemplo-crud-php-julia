@@ -1,3 +1,21 @@
+<?php
+/* Verificar se o fotrmulário foi acionado */
+if(isset($_POST['inserir']) ){
+    // Acessando as funções do CRUD de Fabricantes
+    require_once "../src/funcoes-fabricantes.php";
+
+    // Capturando o nome digitado do novo fabricante
+    $nome = filter_input(
+        INPUT_POST, "nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS
+    ); 
+    // filter_input() - Filtro de entrada
+    // INPUT_POST - Metodo do furmulário
+    // FILTER_SANITIZE_FULL_SPECIAL_CHARS - Constante 
+
+    // Inserindo um novo fabricante através de uma função
+    inserirFabricante($conexao, $nome);
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
