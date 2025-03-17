@@ -20,7 +20,7 @@ function listarFabricantes(PDO $conexao):array {
     e os transforma em um array associativo */
     return $consulta->fetchAll(PDO::FETCH_ASSOC);
 
-    } catch (\Exception $erro) {
+    } catch (Exception $erro) {
         die("Erro: ".$erro->getMessage());
     }
 }
@@ -44,5 +44,23 @@ function inserirFabricante(PDO $conexao, string $nomeDoFabricante):void { //void
         $consulta->execute();
     } catch (Exception $erro) {
         die("Erro ao inserir: ".$erro->getMessage());
+    }
+}
+
+// listarUmFabricante: usada pela página fabricante/atualizar.php
+function listarUmFabricante(PDO $conexao, int $idFabricante):array{
+    $sql = "SELECT * FROM fabricantes WHERE id = :id";
+
+    try{
+        $consulta = $conexao->prepare($sql);
+
+        $consulta->bindValue(":id", $idFabricante, PDO::PARAM_INT);
+    
+        $consulta->execute();
+        /*Usamos o fetch para garantir o retorno de um único array
+        associoativo com o resultado */
+        return $consulta->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $erro) {
+        die("Erro ao carregar fabricantes: ".$erro->getMessage());
     }
 }
