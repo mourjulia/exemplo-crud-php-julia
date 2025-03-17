@@ -9,14 +9,14 @@ $fabricante = listarUmFabricante($conexao, $id);
 
 /* Verificando se o formulário de atualização foi acionado */
 if(isset($_POST['atualizar'])) {
-    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZER_SPECIAL_CHARS);
+    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
 
     /* Exercicío! Implemente a função para atualizar o nome do fabricante */
-    atualizarFabricante();
+    atualizarFabricante($conexao, $id, $nome);
 
     header("location:vizualizar.php");
     exit;
-}
+};
 ?>
 
 

@@ -49,36 +49,35 @@ function inserirFabricante(PDO $conexao, string $nomeDoFabricante):void { //void
 
 // listarUmFabricante: usada pela página fabricante/atualizar.php
 function listarUmFabricante(PDO $conexao, int $idFabricante):array{
-    $sql = "SELECT * FROM fabricantes WHERE id = :id";
+    $sql = "SELECT * FROM fabricantes WHERE nome = :nome";
 
     try{
         $consulta = $conexao->prepare($sql);
 
-        $consulta->bindValue(":id", $idFabricante, PDO::PARAM_INT);
+        $consulta->bindValue(":nome", $idFabricante, PDO::PARAM_INT);
     
         $consulta->execute();
         /*Usamos o fetch para garantir o retorno de um único array
         associoativo com o resultado */
         return $consulta->fetch(PDO::FETCH_ASSOC);
     } catch (Exception $erro) {
-        die("Erro ao carregar fabricantes: ".$erro->getMessage());
+        die("Erro ao carregar ome dos fabricantes: ".$erro->getMessage());
     }
 }
 
-// atualizarFabricante: usada oela página fabricante/atualizar.php
-function atualizarFabricante(PDO $conexao, int $idFabricante):array{
-    $sql = "SELECT * FROM fabricantes WHERE id = :id";
-
+// atualizarFabricante: usada pela página fabricante/atualizar.php
+function atualizarFabricante(PDO $conexao, $idFabricante,  $nomeDoFabricante):void{
+    $sql = 
+    
     try{
         $consulta = $conexao->prepare($sql);
 
-        $consulta->bindValue(":id", $idFabricante, PDO::PARAM_INT);
-    
+        $consulta->bindValue(":nome", $nomeDoFabricante, PDO::PARAM_STR);
+        $consulta->bindValue(":id", $idFabricante, PDO::PARAM_STR);
+
         $consulta->execute();
-        /*Usamos o fetch para garantir o retorno de um único array
-        associoativo com o resultado */
-        return $consulta->fetch(PDO::FETCH_ASSOC);
     } catch (Exception $erro) {
-        die("Erro ao carregar fabricantes: ".$erro->getMessage());
+        die("Erro ao inserir: ".$erro->getMessage());
     }
+
 }
