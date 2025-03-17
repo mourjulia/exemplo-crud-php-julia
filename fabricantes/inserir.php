@@ -14,6 +14,10 @@ if(isset($_POST['inserir']) ){
 
     // Inserindo um novo fabricante através de uma função
     inserirFabricante($conexao, $nome);
+
+    /* Redirecionar para visualização atualizada */
+    header("location:visualizar.php");
+    exit; //equivalente ao die
 }
 ?>
 <!DOCTYPE html>
