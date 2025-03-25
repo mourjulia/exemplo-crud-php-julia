@@ -15,7 +15,7 @@
         <p> Deseja realmente excluir este fabricante?</p>
         
         <a href="visualizar.php" class="btn btn-secondary">Não</a>
-        <a href="" class="btn btn-danger">Sim</a>        
+        <a href="?confirmar-exclusao" class="btn btn-danger">Sim</a>        
     </div>
 
 </div>

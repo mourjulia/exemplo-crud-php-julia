@@ -81,4 +81,5 @@ function atualizarFabricante(PDO $conexao, $idFabricante,  $nomeDoFabricante):vo
     }
 }
 
-//
+//DICAS: 1 -> Em visualizar.php , Configurar o link dinâmico para a página excluir.php
+//       2 -> Em excluir.php, pegar o parâmetro de URL id
