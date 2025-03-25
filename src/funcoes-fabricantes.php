@@ -67,7 +67,7 @@ function listarUmFabricante(PDO $conexao, int $idFabricante):array{
 
 // atualizarFabricante: usada pela página fabricante/atualizar.php
 function atualizarFabricante(PDO $conexao, $idFabricante,  $nomeDoFabricante):void{
-    $sql = 
+    $sql = UPDATE
     
     try{
         $consulta = $conexao->prepare($sql);
