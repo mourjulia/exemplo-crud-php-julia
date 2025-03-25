@@ -14,7 +14,7 @@ if(isset($_POST['atualizar'])) {
     /* Exercicío! Implemente a função para atualizar o nome do fabricante */
     atualizarFabricante($conexao, $id, $nome);
 
-    header("location:vizualizar.php");
+    header("location:visualizar.php");
     exit;
 };
 ?>
