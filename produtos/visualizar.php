@@ -23,6 +23,20 @@ $listarProdutos = listarProdutos($conexao);
         <p><a class="btn btn-primary btn-sm" href="inserir.php">Inserir novo produto</a></p>
 
 
+        <div class="row g-1">
+            <?php foreach ($listarProdutos as $produto) {?>
+                <div class="col-sm-6">
+                    <article class="bg-body-secondary p-2">
+                        <h3>Nome do produto: <?= $produto["nome"] ?></h3>
+                        <h4>Id do Fabricante: <?= $produto["fabricante_id"] ?></h4>
+                        <p><b>Preço:</b> <?= $produto["preco"] ?></p>
+                        <p><b>Quantidade:</b> <?= $produto["quantidade"] ?></p>
+                    </article>
+                </div>
+            <?php }?>
+        </div>
+
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
