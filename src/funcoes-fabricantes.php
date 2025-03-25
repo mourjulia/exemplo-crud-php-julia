@@ -66,7 +66,7 @@ function listarUmFabricante(PDO $conexao, int $idFabricante):array{
 }
 
 // atualizarFabricante: usada pela página fabricante/atualizar.php
-function atualizarFabricante(PDO $conexao, $idFabricante,  $nomeDoFabricante):void{
+function atualizarFabricante(PDO $conexao, $idFabricante, $nomeDoFabricante):void{
     $sql = "UPDATE fabricantes SET nome = :nome WHERE id = :id";
     
     try{
@@ -81,5 +81,15 @@ function atualizarFabricante(PDO $conexao, $idFabricante,  $nomeDoFabricante):vo
     }
 }
 
-//DICAS: 1 -> Em visualizar.php , Configurar o link dinâmico para a página excluir.php
-//       2 -> Em excluir.php, pegar o parâmetro de URL id
+// excluirFabricantes: usada em fabricantes/excluir.php
+function excluirFabricante($conexao, $idFabricante):void {
+    $sql = "DELETE FROM fabricantes WHERE id = :id";
+
+    try {
+        $consulta = $conexao->prepare($sql);
+        $consulta->bindValue(":id", $idFabricante, PDO::PARAM_INT);
+        $consulta->execute();
+        } catch (Exception $erro) {
+        die("Erro ao excluir fabricante: ".$erro->getMessage());
+    }
+}
