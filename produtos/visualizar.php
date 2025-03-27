@@ -27,8 +27,8 @@ $listarProdutos = listarProdutos($conexao);
             <?php foreach ($listarProdutos as $produto) {?>
                 <div class="col-sm-6">
                     <article class="bg-body-secondary p-2">
-                        <h3>Nome do produto: <?= $produto["nome"] ?></h3>
-                        <h4>Id do Fabricante: <?= $produto["fabricante_id"] ?></h4>
+                        <h3>Nome do produto: <?= $produto["produto"] ?></h3>
+                        <h4>Id do Fabricante: <?= $produto["fabricante"] ?></h4>
                         <p><b>Preço:</b> <?= $produto["preco"] ?></p>
                         <p><b>Quantidade:</b> <?= $produto["quantidade"] ?></p>
                     </article>

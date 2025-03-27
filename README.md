@@ -1,2 +1,5 @@
-# exemplo-crud-php
- Atividades de programação CRUD com PHP procedural
+# Atividades de programação CRUD com PHP procedural
+
+## Exercícios 
+
+### Exe
