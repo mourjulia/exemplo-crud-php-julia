@@ -33,6 +33,7 @@ $listarProdutos = listarProdutos($conexao);
                         <p><b>Preço:</b>
                         <!-- formatar preço ---> <?=formatarPreco($produto["preco"] )?></p> 
                         <p><b>Quantidade:</b> <?= $produto["quantidade"] ?></p>
+                        <p><b>Total: </b>  <?=formatarPreco($produto["preco"] * $produto["quantidade"])?></p>
                     </article>
                 </div>
             <?php }?>
@@ -47,3 +48,4 @@ $listarProdutos = listarProdutos($conexao);
 </body>
 
 </html>
+0
