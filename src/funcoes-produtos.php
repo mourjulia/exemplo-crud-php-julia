@@ -8,7 +8,7 @@ function listarProdutos(PDO $conexao):array {
             produtos.preco, produtos.quantidade,
             fabricantes.nome AS fabricante
         FROM produtos INNER JOIN fabricantes
-        ON produtos.fabricante_id = fabricante_id
+        ON produtos.fabricante_id = fabricantes.id
         ORDER BY produto";  
 
     try {
