@@ -1,3 +1,11 @@
+<?php
+require_once "../src/funcoes-produtos.php";
+require_once "../src/funcoes-fabricantes.php";
+$listaDeFabricantes = listarFabricantes($conexao);
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+$produto = listarUmProduto($conexao, $id);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,28 +24,30 @@
         <form action="" method="post" class="w-50">
             <div class="mb-3">
                 <label class="form-label" for="nome">Nome:</label>
-                <input class="form-control" type="text" name="nome" id="nome" required>
+                <input value="<?=$produto['nome']?>"  class="form-control" type="text" name="nome" id="nome" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="preco">Preço:</label>
-                <input class="form-control" type="number" min="10" max="10000" step="0.01" name="preco" id="preco" required>
+                <input value="<?=$produto['preco']?>"  class="form-control" type="number" min="10" max="10000" step="0.01" name="preco" id="preco" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="quantidade">Quantidade:</label>
-                <input class="form-control" type="number" min="1" max="100" name="quantidade" id="quantidade" required>
+                <input value="<?=$produto['quantidade']?>" class="form-control" type="number" min="1" max="100" name="quantidade" id="quantidade" required>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="fabricante">Fabricante:</label>
                 <select class="form-select" name="fabricante" id="fabricante" required>
                     <option value=""></option>
-                    <option value="">Fabricante 1...</option>
-                    <option value="">Fabricante 2...</option>
-                    <option value="">Fabricante 3...</option>
+                <?php foreach($listaDeFabricantes as $fabricante): ?>
+                    <option value="<?=$fabricante['id']?>">
+                        <?=$fabricante['nome']?>
+                    </option>
+                <?php endforeach ?>    
                 </select>
             </div>
             <div class="mb-3">
                 <label class="form-label" for="descricao">Descrição:</label> <br>
-                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3"></textarea>
+                <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="3"><?=$produto['descricao']?></textarea>
             </div>
             <button class="btn btn-warning" type="submit" name="atualizar">Atualizar produto</button>
         </form>
