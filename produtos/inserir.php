@@ -7,7 +7,7 @@ if(isset($_POST["Inserir"])){
     //Capturar/sanitizar os dados
     $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $preco = filter_input(INPUT_POST, "preco", FILTER_SANITIZE_NUMBER_FLOAT);
-    $quantidade = filter_input(INPUT_POST, "quantidade", FILTER_SANITIZE_SPECIAL_CHARS)
+    $quantidade = filter_input(INPUT_POST, "quantidade", FILTER_SANITIZE_SPECIAL_CHARS);
 
     //Chamando a função responsável por inserir produtos e passar os parâmetros
     inserirProduto($conexao, $nome, $preco, $quantidade, $fabricante, $descricao);
